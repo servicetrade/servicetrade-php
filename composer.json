@@ -1,0 +1,8 @@
+{
+    "name": "servicetrade/servicetrade-php",
+    "autoload": {
+        "psr-0" : {
+            "Servicetrade" : ""
+        }
+    }
+}
