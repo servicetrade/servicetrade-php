@@ -1,8 +1,16 @@
 {
-    "name": "servicetrade/servicetrade-php",
-    "autoload": {
-        "psr-0" : {
-            "Servicetrade" : ""
-        }
-    }
+	"name": "servicetrade/servicetrade",
+	"type": "library",
+	"homepage": "https://github.com/servicetrade/servicetrade-php",
+	"description": "Wrapper library for REST calls to the ServiceTrade API",
+	"keywords": ["api", "servicetrade"],
+	"require": {
+		"php": ">=5.6",
+		"ext-curl": "*"
+	},
+	"autoload": {
+		"psr-0" : {
+			"Servicetrade" : ""
+		}
+	}
 }
