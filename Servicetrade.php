@@ -9,6 +9,7 @@ class Servicetrade
 	protected $baseUrl    = 'https://api.servicetrade.com/api';
 	protected $debug;
 	protected $lastError  = '';
+	protected $lastStatus;
 
 	/**
 	 * @param string $username
@@ -163,6 +164,7 @@ class Servicetrade
 	 */
 	protected function execCurl($method, $path, $query=array(), $curlOpts=array())
 	{
+		$this->lastStatus = null;
 		$method = strtolower($method);
 		$queryString = empty($query) ? '' : '?' . http_build_query($query);
 
@@ -173,6 +175,8 @@ class Servicetrade
 		}
 		$curlOpts[CURLOPT_RETURNTRANSFER] = 1;
 		$curlOpts[CURLOPT_SSL_VERIFYPEER] = true;
+		$curlOpts[CURLOPT_TIMEOUT] = 60;
+		$curlOpts[CURLOPT_CONNECTTIMEOUT] = 30;
 
 		curl_setopt_array($curl_handle, $curlOpts);
 
@@ -180,7 +184,9 @@ class Servicetrade
 
 		$results = json_decode($rawResult, true);
 		$status = curl_getinfo($curl_handle, CURLINFO_HTTP_CODE);
+		$this->lastStatus = $status;
 		curl_close($curl_handle);
+
 		if($this->debug == true) {
 			print_r($results);
 		}
