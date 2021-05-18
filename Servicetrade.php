@@ -7,6 +7,7 @@ class Servicetrade
 {
 	protected $authId;
 	protected $baseUrl    = 'https://api.servicetrade.com/api';
+	protected $userAgent  = 'ServiceTrade PHP SDK';
 	protected $debug;
 	protected $lastError  = '';
 	protected $lastStatus;
@@ -14,13 +15,20 @@ class Servicetrade
 	/**
 	 * @param string $username
 	 * @param string $password
-	 * @param string $baseUrl
+	 * @param array $options
 	 * @return string or null
 	 */
-	public function __construct($username, $password, $baseUrl=null)
+	public function __construct($username, $password, $options=array())
 	{
-		if ($baseUrl) {
-			$this->baseUrl = $baseUrl;
+		// previously the third param was baseUrl string
+		if (is_scalar($options)) {
+			$options = array('baseUrl' => $options);
+		}
+		if (isset($options['baseUrl'])) {
+			$this->baseUrl = $options['baseUrl'];
+		}
+		if (isset($options['userAgent'])) {
+			$this->userAgent = $options['userAgent'];
 		}
 		return $this->authenticate($username, $password);
 	}
@@ -172,6 +180,9 @@ class Servicetrade
 		$curl_handle = curl_init($url);
 		if ($this->authId) {
 			$curlOpts[CURLOPT_COOKIE] = 'PHPSESSID=' . $this->authId;
+		}
+		if ($this->userAgent) {
+			$curlOpts[CURLOPT_USERAGENT] = $this->userAgent;
 		}
 		$curlOpts[CURLOPT_RETURNTRANSFER] = 1;
 		$curlOpts[CURLOPT_SSL_VERIFYPEER] = true;
