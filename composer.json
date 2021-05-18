@@ -12,5 +12,8 @@
 		"psr-0" : {
 			"Servicetrade" : ""
 		}
+	},
+	"require-dev": {
+		"phpunit/phpunit": "^9"
 	}
 }
