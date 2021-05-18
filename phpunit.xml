@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<phpunit
+	colors="true"
+	convertErrorsToExceptions="true"
+	convertNoticesToExceptions="true"
+	convertWarningsToExceptions="true"
+	>
+
+	<testsuites>
+		<testsuite name="Test suite">
+			<directory suffix="Test.php">./tests</directory>
+		</testsuite>
+	</testsuites>
+
+ </phpunit>

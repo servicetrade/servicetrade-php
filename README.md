@@ -5,7 +5,7 @@ Full documentation of ServiceTrade's API is available [here](https://api.service
 
 ## Requirements
 * A ServiceTrade account
-* PHP 5.6 or above with cURL support
+* PHP 7.4 or above with cURL support
 * Composer (recommended)
 
 # Installation
@@ -172,4 +172,12 @@ $attachmentParams = [
 
 $upload = $st->attach($file, $attachmentParams);
 $st->logout();
+```
+
+## Tests
+Tests require PHP 7.4 or above.
+
+```
+composer install
+./vendor/bin/phpunit
 ```
