@@ -1,5 +1,5 @@
 {
-	"name": "servicetrade/servicetrade",
+	"name": "servicetrade/servicetrade-php",
 	"type": "library",
 	"homepage": "https://github.com/servicetrade/servicetrade-php",
 	"description": "Wrapper library for REST calls to the ServiceTrade API",
