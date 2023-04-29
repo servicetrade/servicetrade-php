@@ -1,0 +1,32 @@
+name: CI/CD
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "*" ]
+  pull_request:
+    branches: [ "*" ]
+
+
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+
+    strategy:
+      matrix:
+        include:
+          - php-version: 7.4
+            phpunit-version: 7
+          - php-version: 8.2
+            phpunit-version: 9
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php-version }}
+        tools: phpunit:${{ matrix.phpunit-version }}
+
+    - run: composer install
+    - run: phpunit
