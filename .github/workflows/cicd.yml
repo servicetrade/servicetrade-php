@@ -19,10 +19,8 @@ jobs:
           #   phpunit-version: 4
           # - php-version: 7.4
           #   phpunit-version: 7
-          # - php-version: 8.2
-          #   phpunit-version: 10
-          - php-version: latest
-            phpunit-version: latest
+          - php-version: 8.2
+            phpunit-version: 9
 
     steps:
     - uses: actions/checkout@v3
