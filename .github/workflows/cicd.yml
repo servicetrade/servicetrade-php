@@ -26,4 +26,4 @@ jobs:
         tools: phpunit:${{ matrix.phpunit-versions }}
 
     - run: composer install
-    - run: ./vendor/bin/phpunit
+    - run: phpunit
