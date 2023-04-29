@@ -1,4 +1,5 @@
 <?php
+include('Servicetrade.php');
 
 class ServicetradeTest extends \PHPUnit\Framework\TestCase
 {
