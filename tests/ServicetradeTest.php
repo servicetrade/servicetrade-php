@@ -54,6 +54,11 @@ class ServicetradeTest extends \PHPUnit\Framework\TestCase
 		$baseUrl = $servicetrade->getProperty('baseUrl');
 		$baseUrl->setAccessible(true);
 		$this->assertEquals($baseUrl->getValue($mock), $expectedBaseUrl);
+
+		$expectedUserAgent = 'ServiceTrade PHP SDK';
+		$userAgent = $servicetrade->getProperty('userAgent');
+		$userAgent->setAccessible(true);
+		$this->assertEquals($userAgent->getValue($mock), $expectedUserAgent);
 	}
 
 	public function testConstructor_OptionsArray_AuthenticatesWithProvidedOptions()
